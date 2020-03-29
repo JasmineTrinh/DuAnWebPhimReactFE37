@@ -1,0 +1,112 @@
+﻿npm install create-react-app -g (cài lần đầu duy nhất)
+
+create-react-app fe37reacrjs (câu lệnh tạo project)
+
+
+npm install: cài lại node_modules
+
+npm start: chạy project 
+npm cache clean --force - khi ko chạy đc lệnh npm
+
+
+/**
+
+open terminal -> npm install create-react-app -g (cài bộ react, lần đầu)
+desktop -> open terminal -> create-react-app [fe37reactjs] (tạo project)
+VSC -> fe37reactjs -> open terminal -> 
+npm install (cài lại node_modules) -> npm start (chạy project)
+
+**/
+
+transform.tools -> html to xsl
+
+rcc - class: stateful components
+rfc - function: stateless components
+
+============== Buoi 1 ==============
+
+* Component
+
+    - Stateful Component: Class
+
+    - Stateless Component: function
+
+============== Buoi 2 ==============
+
+* Rendering
+* State
+* List & Key
+
+============== Buoi 3 + 4 ==============
+
+* Props
+    đầu vào 2 components giống nhau
+        + Class: ko cần truyền tham số nhưng khi render cần có từ khóa this
+        + Function: phải truyền vào function 1 tham số props, render ko cần từ khóa this
+    lifting state up
+    bài tập giỏ hàng
+    bài tập user management
+        form + name
+             + onChange -> target
+             + multi
+
+============== Buoi 5 ==============
+
+* componentWillReceiveProps(): chỉ chạy khi props trong đó nhận từ component cha
+    Hàm này thực hiện liên tục mỗi khi props thay đổi
+        (1) Sử dụng để thay đổi trạng thái (state) của component phụ thuộc props
+        (2) Sử dụng các kết quả, khởi tạo biến có tính chất async. Ví dụ: Khởi tạo Google Map Api, đây là quá trình async,
+    do vậy, bạn không thể biết được khi nào khởi tạo xong, thì khi khởi tạo xong có thể truyền xuống component thông qua props, và từ đó bạn có thể khởi tạo các dịch vụ khác.
+
+* bài tập user management(done)
+
+============== Buoi 6 ==============
+
+* Redux
+    npm i redux: cài đặt redux
+    npm i react redux: cài đặt thư viện để kết nối với redux
+
+    - Action
+	- Reducer
+		+ Root
+		+ Child
+	- Store: quản lý state (chứa dữ liệu)
+
+- mapStateToProps: lấy state trên store chuyển thành props thành tại component để dùng
+- mapDispatchToProps: bắn lên store 1 action. Reducer nhận action đó, tính toán -> trả ra state mới.
+	
+============== Buoi 7 ==============
+
+* Download Bootstrap về thẳng thư mục (nó đc lưu trong file pakage.json của node_modules)
+    Mở terminal -> npm i bootstrap jquery popper.js 
+=> Xóa 4 đường link + script BS JQ Popper
+
+* Import BS tại src/index.js
+    import "bootstrap/dist/css/bootstrap.min.css";
+    import "jquery/dist/jquery.min.js";
+    import "popper.js/dist/umd/popper.min.js";
+    import "bootstrap/dist/js/bootstrap.min.js";
+
+* Lifecycle (slide) - Class Component; function Component - HOOKS
+    
+    ** constructor tuy chạy đầu tiên nhưng ko nằm trong Lifecycle
+
+    + constructor, componentWillMount, componentDidMount chỉ chạy 1 lần duy nhất
+    + componentWillUpdate và componentDidUpdate chỉ chạy khi state đc update
+    + shouldComponentUpdate() xét xem state có đc update ko => phải có return true/false
+    + Các Component có 2 tham số là
+            nextProps => sau khi Props ở "cha" truyền sang "con"
+            nextState => sau khi state đc update
+    + Các render ở component con đều chạy lại sau mỗi lần update => performence bị giảm, cần chỉnh phần import, export
+        Vd ở Pure component:
+            import React, { Component, PureComponent } from 'react'
+            export default class Pure extends PureComponent {}
+
+* FormValidation
+    pattern check email (google): value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+    regex check a-z A-Z: /^[a-zA-Z]+$/
+
+Tạo project fe37reactrouting
+    bootstrap jquery popper.js
+    redux react-redux
+        + rootReducer: combines({})
